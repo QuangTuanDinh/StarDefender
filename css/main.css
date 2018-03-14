@@ -1,0 +1,33 @@
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+#mainCanvas {
+    position: relative;
+    background-color: black;
+}
+
+#gameCanvas {
+    position: absolute;
+    left: 400px;
+    top: 0px;
+}
+
+#gameInfo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 380px;
+    background-color: black;
+    font-size: 2em;
+    color: red;
+}
