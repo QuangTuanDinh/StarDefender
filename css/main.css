@@ -1,10 +1,22 @@
 .noselect {
     -webkit-touch-callout: none;
-      -webkit-user-select: none;
-       -khtml-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'starcraft'; /*a name to be used later*/
+    src: url('./font/Starcraft.ttf'); /*URL to font*/
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    /*overflow: hidden;*/
+    background-color: black;
 }
 
 *:focus {
@@ -13,21 +25,26 @@
 
 #mainCanvas {
     position: relative;
-    background-color: black;
-}
-
-#gameCanvas {
-    position: absolute;
-    left: 400px;
-    top: 0px;
+    height:100%;
 }
 
 #gameInfo {
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 380px;
-    background-color: black;
-    font-size: 2em;
-    color: red;
+    width: 20%;
+    overflow:hidden;
+    font-family: 'starcraft';
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    color: purple;
+}
+
+#gameCanvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
 }

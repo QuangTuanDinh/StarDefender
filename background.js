@@ -7,7 +7,7 @@ class Background {
 
     }
 
-    draw(theCtx) {
-        theCtx.drawImage(this.background, 0, 0);
+    draw(theCtx, theWidth, theHeight) {
+        theCtx.drawImage(this.background, 0, 0, theWidth, theHeight);
     }
 }

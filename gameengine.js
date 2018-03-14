@@ -14,15 +14,15 @@ class GameEngine {
         this.defenders = [];
         this.enemies = [];
         this.background = null;
-        this.surfaceWidth = null;
-        this.surfaceHeight = null;
+        this.canvasWidth = null;
+        this.canvasHeight = null;
     }
 
     init(theGameCtx, theBackGround) {
         this.gameCtx = theGameCtx;
         this.background = theBackGround;
-        this.surfaceWidth = this.gameCtx.canvas.width;
-        this.surfaceHeight = this.gameCtx.canvas.height;
+        this.canvasWidth = this.gameCtx.canvas.width;
+        this.canvasHeight = this.gameCtx.canvas.height;
         this.timer = new Timer();
     }
 
@@ -35,16 +35,16 @@ class GameEngine {
     }
 
     draw() {
-        this.gameCtx.clearRect(0, 0, this.surfaceWidth, this.surfaceHeight);
+        this.gameCtx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         this.gameCtx.save();
-        this.background.draw(this.gameCtx);
+        this.background.draw(this.gameCtx, this.canvasWidth, this.canvasHeight);
         this.defenders.forEach(defender => defender.draw());
 
         this.gameCtx.restore();
     }
 
     update() {
-
+        this.resize();
     }
 
     reset() {
@@ -53,6 +53,13 @@ class GameEngine {
 
     pause() {
 
+    }
+
+    resize() {
+        this.gameCtx.canvas.width = Math.min(window.innerWidth, window.innerHeight);
+        this.gameCtx.canvas.height = this.gameCtx.canvas.width;
+        this.canvasWidth = this.gameCtx.canvas.width;
+        this.canvasHeight = this.gameCtx.canvas.height;
     }
 
     loop() {
