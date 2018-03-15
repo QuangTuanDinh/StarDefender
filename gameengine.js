@@ -21,8 +21,12 @@ class GameEngine {
 
     init() {
         this.background = new Background(AM.getAsset(BACKGROUND_PATH));
+        this.defenderInfo = new DefenderInfo();
+        var that = this;
         this.portraitsDiv = document.getElementById('portraits');
-        DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender)));
+        DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender, that.defenderInfo)));
+
+        this.control = new Control(this.defenderInfo);
         this.resize();
         this.input();
         this.timer = new Timer();
@@ -48,12 +52,12 @@ class GameEngine {
         this.background.draw(this.canvasWidth, this.canvasHeight);
         this.defenders.forEach(defender => defender.draw());
 
-        
+
         GAME_CONTEXT.restore();
     }
 
     update() {
-        
+
     }
 
     reset() {
@@ -66,11 +70,11 @@ class GameEngine {
 
     resize() {
         this.background.update();
-        
+
         this.canvasWidth = GAME_CONTEXT.canvas.width;
         this.canvasHeight = GAME_CONTEXT.canvas.height;
-        
-        this.portraitsDiv.style.height = (this.portraitsDiv.clientWidth * 3 / 2) +  'px';
+
+        this.portraitsDiv.style.height = (this.portraitsDiv.clientWidth * 3 / 2) + 'px';
 
         this.portraits.forEach(portrait => portrait.update());
 
@@ -80,8 +84,7 @@ class GameEngine {
     }
 
     input() {
-        //disable context menu
-        document.getElementById('container').addEventListener('contextmenu', event => event.preventDefault());
+
     }
 }
 

@@ -1,11 +1,11 @@
 class Portrait {
-    constructor(properties) {
+    constructor(properties, infoElement) {
         this.properties = properties;
         this.portraitCanvas = document.getElementById(this.properties.name);
         this.costElement = document.getElementById(this.properties.name + 'Cost');
         this.costElement.innerHTML = this.properties.cost;
-        this.defenderInfo = document.getElementById('defenderInfo');
-        this.input();
+        
+        this.input(infoElement);
     }
 
     update() {
@@ -18,10 +18,10 @@ class Portrait {
     }
 
     //Mouse listener for portraits
-    input() {
+    input(infoElement) {
         var that = this;
-        this.portraitCanvas.addEventListener('click', function(event) {
-            that.defenderInfo.innerHTML = that.properties.name;
+        this.portraitCanvas.addEventListener('mousemove', function(event) {
+            infoElement.select(that.properties);
         })
     }
 }
