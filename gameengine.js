@@ -22,11 +22,10 @@ class GameEngine {
     init() {
         this.background = new Background(AM.getAsset(BACKGROUND_PATH));
         this.portraitsDiv = document.getElementById('portraits');
-        
         DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender)));
         this.resize();
+        this.input();
         this.timer = new Timer();
-
     }
 
     start() {
@@ -35,6 +34,12 @@ class GameEngine {
             that.loop();
             requestAnimFrame(gameLoop, GAME_CONTEXT.canvas);
         })();
+    }
+
+    loop() {
+        this.clockTick = this.timer.tick();
+        this.update();
+        this.draw();
     }
 
     draw() {
@@ -48,9 +53,6 @@ class GameEngine {
     }
 
     update() {
-        
-        
-
         
     }
 
@@ -77,12 +79,9 @@ class GameEngine {
         this.portraits.forEach(portrait => portrait.draw());
     }
 
-    
-
-    loop() {
-        this.clockTick = this.timer.tick();
-        this.update();
-        this.draw();
+    input() {
+        //disable context menu
+        document.getElementById('container').addEventListener('contextmenu', event => event.preventDefault());
     }
 }
 
