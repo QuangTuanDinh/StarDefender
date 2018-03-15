@@ -1,11 +1,15 @@
-var gameEngine = new GameEngine();
+var GAME_ENGINE = new GameEngine();
 var AM = new AssetManager();
-AM.queueDownload("./img/defenders/marine/marine.png");
-AM.queueDownload("./img/maps/map_0.png");
+var GAME_CONTEXT = null;
+
+DEFENDER_PROPERTIES.forEach(properties => properties.sprites.forEach(image => AM.queueDownload(properties.path + image)))
+
+AM.queueDownload(BACKGROUND_PATH);
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameCanvas");
     var gameCtx = canvas.getContext("2d");
-    let background = new Background(AM.getAsset("./img/maps/map_0.png"));
-    gameEngine.init(gameCtx, background);
-    gameEngine.start();
+    GAME_CONTEXT = gameCtx;
+    GAME_ENGINE.init();
+    GAME_ENGINE.start();
+    window.addEventListener('resize', GAME_ENGINE.resize(), true);
 });

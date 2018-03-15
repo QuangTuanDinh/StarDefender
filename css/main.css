@@ -8,8 +8,8 @@
 }
 
 @font-face {
-    font-family: 'starcraft'; /*a name to be used later*/
-    src: url('./font/Starcraft.ttf'); /*URL to font*/
+    font-family: 'starcraft';
+    src: url('./font/Starcraft.ttf');
 }
 
 html, body {
@@ -47,4 +47,59 @@ html, body {
     min-width: 50%;
     height: 100%;
     display: block;
+}
+
+#portraits {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    width: 15%;
+}
+
+#scv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 33%;
+}
+
+#marine {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 33%;
+}
+
+#ghost {
+    position: absolute;
+    top: 33%;
+    left: 0;
+    width: 50%;
+    height: 33%;
+}
+
+#firebat {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    width: 50%;
+    height: 33%;
+}
+
+#turret {
+    position: absolute;
+    top: 66%;
+    left: 0%;
+    width: 50%;
+    height: 33%;
+}
+
+#battlecruiser {
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    width: 50%;
+    height: 33%;
 }
