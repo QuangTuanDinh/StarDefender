@@ -1,18 +1,18 @@
 class Animation {
-    constructor(spriteSheet, frameWidth, frameHeight, sheetWidth, frameDuration, frames, loop, scale) {
+    constructor(spriteSheet, animationProperties) {
         this.spriteSheet = spriteSheet;
-        this.frameWidth = frameWidth;
-        this.frameDuration = frameDuration;
-        this.frameHeight = frameHeight;
-        this.sheetWidth = sheetWidth;
-        this.frames = frames;
-        this.totalTime = frameDuration * frames;
-        this.elapsedTime = 0;
-        this.loop = loop;
-        this.scale = scale;
+        this.frameWidth = animationProperties.frameWidth;
+        this.frameDuration = animationProperties.frameDuration;
+        this.frameHeight = animationProperties.frameHeight;
+        this.sheetWidth = animationProperties.sheetWidth;
+        this.frames = animationProperties.frames;
+        this.totalTime = this.frameDuration * this.frames;
+        this.loop = animationProperties.loop;
+        this.scale = animationProperties.scale;
+        this.elapsedTime = 1;
     }
 
-    drawFrame(tick, ctx, x, y) {
+    drawPortraitAnimation(tick, ctx, x, y, isMouseIn) {
         this.elapsedTime += tick;
         if (this.isDone()) {
             if (this.loop)
@@ -25,6 +25,11 @@ class Animation {
         yindex = Math.floor(frame / this.sheetWidth);
         ctx.drawImage(this.spriteSheet, xindex * this.frameWidth, yindex * this.frameHeight, // source from sheet
             this.frameWidth, this.frameHeight, x, y, this.frameWidth * this.scale, this.frameHeight * this.scale);
+
+        if(isMouseIn) {
+            ctx.strokeStyle = 'white';
+            ctx.strokeRect(x, y, this.frameWidth * this.scale - 1, this.frameHeight * this.scale - 1);
+        }
     }
 
     currentFrame() {
@@ -33,5 +38,9 @@ class Animation {
 
     isDone() {
         return (this.elapsedTime >= this.totalTime);
+    }
+
+    setScale(canvasWidth, canvasHeight) {
+        this.scale = Math.max(canvasWidth, canvasHeight) / Math.max(this.frameWidth, this.frameHeight);
     }
 }

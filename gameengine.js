@@ -17,6 +17,7 @@ class GameEngine {
         this.background = null;
         this.canvasWidth = null;
         this.canvasHeight = null;
+        this.clockTick = 0;
     }
 
     init() {
@@ -52,7 +53,7 @@ class GameEngine {
         this.background.draw(this.canvasWidth, this.canvasHeight);
         this.defenders.forEach(defender => defender.draw());
 
-
+        this.portraits.forEach(portrait => portrait.draw());
         GAME_CONTEXT.restore();
     }
 

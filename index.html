@@ -2,20 +2,22 @@
 <html>
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <meta charset="utf-8">
     <title>Star Defender</title>
-    <script type="text/javascript" src="./defender_info.js"></script>
-    <script type="text/javascript" src="./defender_properties.js"></script>
+    <script type="text/javascript" src="./entity/entity.js"></script>
+    <script type="text/javascript" src="./entity/defender/defender.js"></script>
+    <script type="text/javascript" src="./entity/defender/scv.js"></script>
+    <script type="text/javascript" src="./view/defender_info.js"></script>
+    <script type="text/javascript" src="./entity/defender/defender_properties.js"></script>
     <script type="text/javascript" src="./portrait.js"></script>
     <script type="text/javascript" src="./map.js"></script>
-    <script type="text/javascript" src="./gameinfo.js"></script>
-    <script type="text/javascript" src="./background.js"></script>
+    <script type="text/javascript" src="./view/gameinfo.js"></script>
+    <script type="text/javascript" src="./view/background.js"></script>
     <script type="text/javascript" src="./timer.js"></script>
     <script type="text/javascript" src="./control.js"></script>
     <script type="text/javascript" src="./animation.js"></script>
-    <script type="text/javascript" src="./entity.js"></script>
-    <script type="text/javascript" src="./defender.js"></script>
     <script type="text/javascript" src="./gameengine.js"></script>
     <script type="text/javascript" src="./assetmanager.js"></script>
     <script type="text/javascript" src="./main.js"></script>
@@ -33,22 +35,28 @@
             <p id="defenderInfo"></p>
             <div id="portraits">
                 <canvas id="scv"></canvas>
-                <p id="scvCost"></p>
-                
+                <p class="cost" id="scvCost"></p>
+                <p class="hotkey" id="scvHotkey"></p>
+
                 <canvas id="marine"></canvas>
-                <p id="marineCost"></p>
-                
+                <p class="cost" id="marineCost"></p>
+                <p class="hotkey" id="marineHotkey"></p>
+
                 <canvas id="ghost"></canvas>
-                <p id="ghostCost"></p>
-                
+                <p class="cost" id="ghostCost"></p>
+                <p class="hotkey" id="ghostHotkey"></p>
+
                 <canvas id="firebat"></canvas>
-                <p id="firebatCost"></p>
-                
+                <p class="cost" id="firebatCost"></p>
+                <p class="hotkey" id="firebatHotkey"></p>
+
                 <canvas id="battlecruiser"></canvas>
-                <p id="battlecruiserCost"></p>
-                
+                <p class="cost" id="battlecruiserCost"></p>
+                <p class="hotkey" id="battlecruiserHotkey"></p>
+
                 <canvas id="turret"></canvas>
-                <p id="turretCost"></p>
+                <p class="cost" id="turretCost"></p>
+                <p class="hotkey" id="turretHotkey"></p>
             </div>
         </div>
     </div>

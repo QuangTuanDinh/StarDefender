@@ -53,25 +53,37 @@ p {
     position: absolute;
     top: 0%;
     left: 80%;
-    width: 15%;
+    width: 20%;
     height: 100%;
 }
 
 #defenderInfo {
     position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
+    left: 0%;
+    top: 5%;
+    width: 90%;
+    font-family: 'Open Sans', sans-serif;
+    font-style: sans-serif;
     font-size: 1em;
-    letter-spacing: 0em;
-    line-height: 1em;
+    color: gray;
+    letter-spacing: 0.04em;
+    line-height: 1.1em;
 }
 
 #portraits {
     position: absolute;
     top: 50%;
     left: 0;
-    width: 100%;
+    width: 70%;
+}
+
+.cost {
+    font-size: 1em;
+    letter-spacing: 0em;
+}
+
+.hotkey {
+    font-size: 1.4em;
 }
 
 #scv {
@@ -84,8 +96,14 @@ p {
 
 #scvCost {
     position: absolute;
-    top: -5%;
-    left: 0;
+    top: -4%;
+    left: 1%;
+}
+
+#scvHotkey {
+    position: absolute;
+    top: 21%;
+    left: 38%;
 }
 
 #marine {
@@ -98,36 +116,54 @@ p {
 
 #marineCost {
     position: absolute;
-    top: -5%;
-    left: 50%;
+    top: -4%;
+    left: 51%;
 }
 
-#ghost {
+#marineHotkey {
     position: absolute;
-    top: 33%;
-    left: 0;
-    width: 50%;
-    height: 33%;
-}
-
-#ghostCost {
-    position: absolute;
-    top: 28%;
-    left: 0;
+    top: 21%;
+    left: 85%;
 }
 
 #firebat {
     position: absolute;
     top: 33%;
-    left: 50%;
+    left: 0;
     width: 50%;
     height: 33%;
 }
 
 #firebatCost {
     position: absolute;
-    top: 28%;
+    top: 29%;
+    left: 1%;
+}
+
+#firebatHotkey {
+    position: absolute;
+    top: 54%;
+    left: 38%;
+}
+
+#ghost {
+    position: absolute;
+    top: 33%;
     left: 50%;
+    width: 50%;
+    height: 33%;
+}
+
+#ghostCost {
+    position: absolute;
+    top: 29%;
+    left: 51%;
+}
+
+#ghostHotkey {
+    position: absolute;
+    top: 54%;
+    left: 88%;
 }
 
 #turret {
@@ -140,8 +176,14 @@ p {
 
 #turretCost {
     position: absolute;
-    top: 61%;
-    left: 0%;
+    top: 62%;
+    left: 1%;
+}
+
+#turretHotkey {
+    position: absolute;
+    top: 86%;
+    left: 38%;
 }
 
 #battlecruiser {
@@ -154,6 +196,12 @@ p {
 
 #battlecruiserCost {
     position: absolute;
-    top: 61%;
-    left: 50%;
+    top: 62%;
+    left: 51%;
+}
+
+#battlecruiserHotkey {
+    position: absolute;
+    top: 86%;
+    left: 88%;
 }
