@@ -27,8 +27,9 @@ class Animation {
             this.frameWidth, this.frameHeight, x, y, this.frameWidth * this.scale, this.frameHeight * this.scale);
 
         if(isMouseIn) {
+            ctx.lineWidth = 2;
             ctx.strokeStyle = 'white';
-            ctx.strokeRect(x, y, this.frameWidth * this.scale - 1, this.frameHeight * this.scale - 1);
+            ctx.strokeRect(x, y, this.frameWidth * this.scale - ctx.lineWidth, this.frameHeight * this.scale - ctx.lineWidth);
         }
     }
 

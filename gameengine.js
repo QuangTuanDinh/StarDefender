@@ -16,6 +16,7 @@ class GameEngine {
         this.portraits = [];
         this.canvasWidth = null;
         this.canvasHeight = null;
+        this.background = null
         this.clockTick = 0;
     }
 
@@ -50,10 +51,13 @@ class GameEngine {
     draw() {
         GAME_CONTEXT.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         GAME_CONTEXT.save();
+
         this.background.draw(this.canvasWidth, this.canvasHeight);
+
         this.defenders.forEach(defender => defender.draw());
 
         this.portraits.forEach(portrait => portrait.draw());
+
         GAME_CONTEXT.restore();
     }
 
@@ -70,18 +74,18 @@ class GameEngine {
     }
 
     resize() {
-        this.background.update();
+        GAME_ENGINE.background.update();
 
-        this.canvasWidth = GAME_CONTEXT.canvas.width;
-        this.canvasHeight = GAME_CONTEXT.canvas.height;
+        GAME_ENGINE.canvasWidth = GAME_CONTEXT.canvas.width;
+        GAME_ENGINE.canvasHeight = GAME_CONTEXT.canvas.height;
+        
+        let portraitsDiv = document.getElementById('portraits');
+        portraitsDiv.style.height = (portraitsDiv.clientWidth * 3 / 2) + 'px';
 
-        this.portraitsDiv = document.getElementById('portraits');
-        this.portraitsDiv.style.height = (this.portraitsDiv.clientWidth * 3 / 2) + 'px';
+        GAME_ENGINE.portraits.forEach(portrait => portrait.update());
 
-        this.portraits.forEach(portrait => portrait.update());
+        GAME_ENGINE.background.draw(GAME_ENGINE.canvasWidth, GAME_ENGINE.canvasHeight);
 
-        this.background.draw(this.canvasWidth, this.canvasHeight);
-
-        this.portraits.forEach(portrait => portrait.draw());
+        GAME_ENGINE.portraits.forEach(portrait => portrait.draw());
     }
 }

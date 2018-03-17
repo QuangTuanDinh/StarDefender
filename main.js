@@ -1,4 +1,4 @@
-var GAME_ENGINE = new GameEngine();
+var GAME_ENGINE = null;
 var AM = new AssetManager();
 var GAME_CONTEXT = null;
 
@@ -9,7 +9,8 @@ AM.downloadAll(function () {
     var canvas = document.getElementById("gameCanvas");
     var gameCtx = canvas.getContext("2d");
     GAME_CONTEXT = gameCtx;
+    GAME_ENGINE = new GameEngine();
     GAME_ENGINE.init();
     GAME_ENGINE.start();
-    window.addEventListener('resize', GAME_ENGINE.resize(), true);
+    window.addEventListener('resize', GAME_ENGINE.resize, true);
 });

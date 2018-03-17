@@ -12,6 +12,4 @@ class Background {
     draw(theWidth, theHeight) {
         GAME_CONTEXT.drawImage(this.image, 0, 0, theWidth, theHeight);
     }
-
-
 }

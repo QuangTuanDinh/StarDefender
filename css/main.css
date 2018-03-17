@@ -19,8 +19,8 @@ p {
     user-select: none;
     overflow:hidden;
     font-family: 'starcraft';
-    font-size: 1.2em;
-    letter-spacing: 0.1em;
+    font-size: 1.2vw;
+    letter-spacing: 0.1vw;
     color: purple;
 }
 
@@ -44,9 +44,8 @@ p {
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    min-width: 50%;
-    height: 100%;
     display: block;
+    max-width: 60%;
 }
 
 #rightContainer {
@@ -64,10 +63,10 @@ p {
     width: 90%;
     font-family: 'Open Sans', sans-serif;
     font-style: sans-serif;
-    font-size: 1em;
+    font-size: 1vw;
     color: gray;
-    letter-spacing: 0.04em;
-    line-height: 1.1em;
+    letter-spacing: 0.04vw;
+    line-height: 1.1vw;
 }
 
 #portraits {
@@ -78,12 +77,12 @@ p {
 }
 
 .cost {
-    font-size: 1em;
-    letter-spacing: 0em;
+    font-size: 1vw;
+    letter-spacing: 0;
 }
 
 .hotkey {
-    font-size: 1.4em;
+    font-size: 1.4vw;
 }
 
 #scv {
@@ -102,8 +101,8 @@ p {
 
 #scvHotkey {
     position: absolute;
-    top: 21%;
-    left: 38%;
+    top: 20%;
+    left: 37%;
 }
 
 #marine {
@@ -122,8 +121,8 @@ p {
 
 #marineHotkey {
     position: absolute;
-    top: 21%;
-    left: 85%;
+    top: 20%;
+    left: 84%;
 }
 
 #firebat {
@@ -142,8 +141,8 @@ p {
 
 #firebatHotkey {
     position: absolute;
-    top: 54%;
-    left: 38%;
+    top: 53%;
+    left: 37%;
 }
 
 #ghost {
@@ -162,8 +161,8 @@ p {
 
 #ghostHotkey {
     position: absolute;
-    top: 54%;
-    left: 88%;
+    top: 53%;
+    left: 87%;
 }
 
 #turret {
@@ -182,8 +181,8 @@ p {
 
 #turretHotkey {
     position: absolute;
-    top: 86%;
-    left: 38%;
+    top: 85%;
+    left: 37%;
 }
 
 #battlecruiser {
@@ -202,6 +201,6 @@ p {
 
 #battlecruiserHotkey {
     position: absolute;
-    top: 86%;
-    left: 88%;
+    top: 85%;
+    left: 87%;
 }
