@@ -2,7 +2,8 @@ var GAME_ENGINE = null;
 var AM = new AssetManager();
 var GAME_CONTEXT = null;
 
-DEFENDER_PROPERTIES.forEach(properties => properties.sprites.forEach(image => AM.queueDownload(properties.path + image)))
+DEFENDER_PROPERTIES.forEach(properties => properties.sprites.forEach(image => AM.queueDownload(properties.path + image)));
+AM.queueDownload(TILE_PATH)
 
 AM.queueDownload(BACKGROUND_PATH);
 AM.downloadAll(function () {

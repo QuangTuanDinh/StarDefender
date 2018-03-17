@@ -25,11 +25,11 @@ class GameEngine {
         this.control = new Control();
         this.defenderInfo = new DefenderInfo();
         var that = this;
-
         DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender, that.defenderInfo)));
         this.portraits.forEach(function(portrait) {
             portrait.addObserver(that.defenderInfo);
         });
+        this.map = new Map(MAP_1, AM.getAsset(TILE_PATH));
         this.resize();
         this.timer = new Timer();
     }
@@ -53,7 +53,7 @@ class GameEngine {
         GAME_CONTEXT.save();
 
         this.background.draw(this.canvasWidth, this.canvasHeight);
-
+        this.map.draw();
         this.defenders.forEach(defender => defender.draw());
 
         this.portraits.forEach(portrait => portrait.draw());
@@ -85,7 +85,7 @@ class GameEngine {
         GAME_ENGINE.portraits.forEach(portrait => portrait.update());
 
         GAME_ENGINE.background.draw(GAME_ENGINE.canvasWidth, GAME_ENGINE.canvasHeight);
-
+        GAME_ENGINE.map.update(GAME_ENGINE.canvasWidth);
         GAME_ENGINE.portraits.forEach(portrait => portrait.draw());
     }
 }
