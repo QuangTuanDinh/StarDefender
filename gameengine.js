@@ -4,7 +4,7 @@ window.requestAnimFrame = (function () {
         window.mozRequestAnimationFrame ||
         window.oRequestAnimationFrame ||
         window.msRequestAnimationFrame ||
-        function (/* function */ callback, /* DOMElement */ element) {
+        function ( /* function */ callback, /* DOMElement */ element) {
             window.setTimeout(callback, 1000 / 60);
         };
 })();
@@ -14,7 +14,6 @@ class GameEngine {
         this.defenders = [];
         this.enemies = [];
         this.portraits = [];
-        this.background = null;
         this.canvasWidth = null;
         this.canvasHeight = null;
         this.clockTick = 0;
@@ -22,14 +21,15 @@ class GameEngine {
 
     init() {
         this.background = new Background(AM.getAsset(BACKGROUND_PATH));
+        this.control = new Control();
         this.defenderInfo = new DefenderInfo();
         var that = this;
-        this.portraitsDiv = document.getElementById('portraits');
-        DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender, that.defenderInfo)));
 
-        this.control = new Control(this.defenderInfo);
+        DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender, that.defenderInfo)));
+        this.portraits.forEach(function(portrait) {
+            portrait.addObserver(that.defenderInfo);
+        });
         this.resize();
-        this.input();
         this.timer = new Timer();
     }
 
@@ -75,6 +75,7 @@ class GameEngine {
         this.canvasWidth = GAME_CONTEXT.canvas.width;
         this.canvasHeight = GAME_CONTEXT.canvas.height;
 
+        this.portraitsDiv = document.getElementById('portraits');
         this.portraitsDiv.style.height = (this.portraitsDiv.clientWidth * 3 / 2) + 'px';
 
         this.portraits.forEach(portrait => portrait.update());
@@ -83,9 +84,4 @@ class GameEngine {
 
         this.portraits.forEach(portrait => portrait.draw());
     }
-
-    input() {
-
-    }
 }
-

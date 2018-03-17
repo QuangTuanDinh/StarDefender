@@ -1,5 +1,5 @@
 class Portrait {
-    constructor(properties, infoElement) {
+    constructor(properties) {
         this.properties = properties;
         this.portraitCanvas = document.getElementById(this.properties.name.toLowerCase());
         this.portraitContext = this.portraitCanvas.getContext('2d');
@@ -14,8 +14,7 @@ class Portrait {
         this.animation = new Animation(this.image, this.properties.portrait);
 
         this.isMouseIn = false;
-
-        this.input(infoElement);
+        this.input();
     }
 
     update() {
@@ -29,13 +28,30 @@ class Portrait {
     }
 
     //Mouse listener for portraits
-    input(infoElement) {
+    input() {
         var that = this;
-        this.portraitCanvas.addEventListener('mousemove', function(event) {
-            infoElement.select(that.properties);
+        this.portraitCanvas.addEventListener('mousemove', function (event) {
+            that.notifyObservers(that.getInfo());
             that.isMouseIn = true;
         })
 
-        this.portraitCanvas.addEventListener('mouseout', event => that.isMouseIn = false);
+        this.portraitCanvas.addEventListener('mouseout', function (event) {
+            that.notifyObservers('');
+            that.isMouseIn = false;
+        });
+    }
+
+    getInfo() {
+        return '<b>' + this.properties.name.toUpperCase() + '</b>' +
+                                '<br>' +
+                                '<br>' + this.properties.description +
+                                '<br>' +
+                                '<br>Cost: ' + this.properties.stats.cost +
+                                '<br>Range: ' + this.properties.stats.range +
+                                '<br>Damage: ' + this.properties.stats.damage +
+                                '<br>Coodown: ' + this.properties.stats.cooldown +
+                                '<br>Hotkey: ' + this.properties.hotkey.toUpperCase();
     }
 }
+
+Object.assign(Portrait.prototype, Observable);

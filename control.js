@@ -1,7 +1,7 @@
 class Control {
-    constructor(defenderInfo) {
+    constructor() {
         this.element = document.getElementById('container');
-        this.defenderInfo = defenderInfo;
+        
         this.input();
     }
 
@@ -12,9 +12,16 @@ class Control {
         })
 
         this.element.addEventListener('contextmenu', function (event) {
-            event.preventDefault(); //prevent right click from opening context menu
-            that.defenderInfo.element.innerHTML = '';
+            event.preventDefault(); //prevent right click from opening context men
         })
+    }
+
+    pause() {
+
+    }
+
+    reset() {
+        
     }
     // startInput() {
     //     console.log('Starting input');
@@ -66,12 +73,4 @@ class Control {
     //     }, false);
     //     console.log('Input started');
     // }
-
-    pause() {
-
-    }
-
-    reset() {
-        
-    }
 }
