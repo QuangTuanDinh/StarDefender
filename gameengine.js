@@ -26,9 +26,7 @@ class GameEngine {
         this.defenderInfo = new DefenderInfo();
         var that = this;
         DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender, that.defenderInfo)));
-        this.portraits.forEach(function(portrait) {
-            portrait.addObserver(that.defenderInfo);
-        });
+        this.portraits.forEach(portrait => portrait.addObserver(that.defenderInfo));
         this.map = new Map(MAP_1, AM.getAsset(TILE_PATH));
         this.resize();
         this.timer = new Timer();
@@ -78,7 +76,7 @@ class GameEngine {
 
         GAME_ENGINE.canvasWidth = GAME_CONTEXT.canvas.width;
         GAME_ENGINE.canvasHeight = GAME_CONTEXT.canvas.height;
-        
+
         let portraitsDiv = document.getElementById('portraits');
         portraitsDiv.style.height = (portraitsDiv.clientWidth * 3 / 2) + 'px';
 

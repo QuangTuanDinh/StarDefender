@@ -3,15 +3,15 @@ const BATTLECRUISER_PROPERTIES = {
     path: './img/defenders/battlecruiser/',
     sprites: ['portrait.png', 'idle.png', 'projectile.png'],
     hotkey: 'b',
-    description:    'The battlecruiser is a type of terran capital ship employed in the Koprulu Sector. ' +
-                    'As a ship, it can <b>move</b> freely to any empty ground on the map and target both <b>ground and air</b> enemies with <b>high amount of damage</b>. ' +
-                    'Its specialized weapons can <b>shoot through the thick armor</b> of the Zerg.',
+    description: 'The battlecruiser is a type of terran capital ship employed in the Koprulu Sector. ' +
+        'As a ship, it can <b>move</b> freely to any empty ground on the map and target both <b>ground and air</b> enemies with <b>high amount of damage</b>. ' +
+        'Its specialized weapons can <b>shoot through the thick armor</b> of the Zerg.',
     portrait: {
         frameWidth: 173,
         frameHeight: 185,
         sheetWidth: 75,
         frames: 75,
-        frameDuration: 0.13,
+        frameDuration: 0.12,
         loop: true,
         scale: 1
     },
@@ -50,7 +50,7 @@ const FIREBAT_PROPERTIES = {
         frameHeight: 185,
         sheetWidth: 65,
         frames: 65,
-        frameDuration: 0.115,
+        frameDuration: 0.11,
         loop: true,
         scale: 1
     },
@@ -98,14 +98,14 @@ const GHOST_PROPERTIES = {
     path: './img/defenders/ghost/',
     sprites: ['portrait.png', 'idle.png', 'shoot.png'],
     hotkey: 'g',
-    description:    'Ghosts are feared terran covert operatives known for their assassination skills. ' +
-                    'They can take out both <b>ground and air</b> target from <b>long range</b> and <b>penetrate any protected armor</b>.',
+    description: 'Ghosts are feared terran covert operatives known for their assassination skills. ' +
+        'They can take out both <b>ground and air</b> target from <b>long range</b> and <b>penetrate any protected armor</b>.',
     portrait: {
         frameWidth: 224,
         frameHeight: 240,
         sheetWidth: 71,
         frames: 71,
-        frameDuration: 0.12,
+        frameDuration: 0.115,
         loop: true,
         scale: 1
     },
@@ -144,14 +144,14 @@ const MARINE_PROPERTIES = {
     path: './img/defenders/marine/',
     sprites: ['portrait.png', 'idle.png', 'shoot.png'],
     hotkey: 'm',
-    description:    '<b>Marines</b> are a type of terran soldier compose the bulk of most terran front-line forces. ' + 
-                    'Their <b>rapid-fire</b> C-14 rifles are powerful weapons against <b>ground</b> enemies.',
+    description: '<b>Marines</b> are a type of terran soldier compose the bulk of most terran front-line forces. ' +
+        'Their <b>rapid-fire</b> C-14 rifles are powerful weapons against <b>ground</b> enemies.',
     portrait: {
         frameWidth: 180,
         frameHeight: 193,
         sheetWidth: 76,
         frames: 76,
-        frameDuration: 0.115,
+        frameDuration: 0.11,
         loop: true,
         scale: 1
     },
@@ -191,13 +191,13 @@ const SCV_PROPERTIES = {
     sprites: ['portrait.png', 'idle.png'],
     hotkey: 's',
     description: 'The T-280 space construction vehicle (or SCV) is a type of terran general-purpose engineering vehicle. ' +
-                    'Its purpose is to mine the mineral patches to <b>generate more resources</b>.',
+        'Its purpose is to mine the mineral patches to <b>generate more resources</b>.',
     portrait: {
         frameWidth: 180,
         frameHeight: 193,
         sheetWidth: 75,
         frames: 75,
-        frameDuration: 0.125,
+        frameDuration: 0.11,
         loop: true,
         scale: 1
     },
