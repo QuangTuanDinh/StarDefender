@@ -9,7 +9,7 @@ class Background {
         GAME_CONTEXT.canvas.height = GAME_CONTEXT.canvas.width;
     }
 
-    draw(theWidth, theHeight) {
-        GAME_CONTEXT.drawImage(this.image, 0, 0, theWidth, theHeight);
+    draw() {
+        GAME_CONTEXT.drawImage(this.image, 0, 0, GAME_CONTEXT.canvas.width, GAME_CONTEXT.canvas.width);
     }
 }
