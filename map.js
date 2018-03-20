@@ -1,7 +1,7 @@
 class Map {
-    constructor(backgroundImage, tileImage) {
+    constructor(backgroundImage, pathImage) {
         this.background = new Background(backgroundImage);
-        this.tileImage = tileImage;
+        this.pathImage = pathImage;
         this.tileSize = 0;
         this.paths = [];
         this.mapTiles = [];
@@ -39,7 +39,7 @@ class Map {
             for (let j = 0; j < path.length; j++) {
                 let tile = path[j];
                 if (!(this.mapTiles[tile.row][tile.column] instanceof PathTile)) {
-                    this.mapTiles[tile.row][tile.column] = new PathTile(path.length - j, this.tileImage);
+                    this.mapTiles[tile.row][tile.column] = new PathTile(path.length - j, this.pathImage);
                 } else {
                     this.mapTiles[tile.row][tile.column].weight.push(path.length - j);
                 }
@@ -63,7 +63,7 @@ class Map {
         for (let i = 0; i < this.mapTiles.length; i++) {
             for (let j = 0; j < this.mapTiles[i].length; j++) {
                 if (!(this.mapTiles[i][j] instanceof GroundTile)) {
-                    GAME_CONTEXT.drawImage(this.tileImage, this.tileSize * j, this.tileSize * i, this.tileSize, this.tileSize);
+                    GAME_CONTEXT.drawImage(this.pathImage, this.tileSize * j, this.tileSize * i, this.tileSize, this.tileSize);
                 }
             }
         }

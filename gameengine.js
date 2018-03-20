@@ -16,15 +16,18 @@ class GameEngine {
         this.portraits = [];
         this.background = null
         this.clockTick = 0;
+        this.resize = this.resize.bind(this);
     }
 
     init() {
-        this.control = new Control();
-        this.defenderInfo = new DefenderInfo();
+        this.control = new Control(this.portraits);
 
         var that = this;
-        DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender, that.defenderInfo)));
-        this.portraits.forEach(portrait => portrait.addObserver(that.defenderInfo));
+        DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender)));
+        this.portraits.forEach(portrait => {
+            portrait.addObserver(that.control)
+            portrait.input();
+        });
 
         this.map = new Map(AM.getAsset(BACKGROUND_PATH), AM.getAsset(TILE_PATH));
         this.map.setMap(MAP_1);
@@ -72,14 +75,14 @@ class GameEngine {
     }
 
     resize() {
-        GAME_ENGINE.map.update();
+        this.map.update();
 
         let portraitsDiv = document.getElementById('portraits');
         portraitsDiv.style.height = (portraitsDiv.clientWidth * 3 / 2) + 'px';
 
-        GAME_ENGINE.portraits.forEach(portrait => portrait.update());
+        this.portraits.forEach(portrait => portrait.update());
 
-        GAME_ENGINE.map.draw();
-        GAME_ENGINE.portraits.forEach(portrait => portrait.draw());
+        this.map.draw();
+        this.portraits.forEach(portrait => portrait.draw());
     }
 }

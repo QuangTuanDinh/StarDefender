@@ -1,19 +1,24 @@
 class Control {
-    constructor() {
+    constructor(portraits) {
         this.element = document.getElementById('container');
-        
+        this.defenderInfo = new DefenderInfo();
+        this.portraits = portraits;
+        this.contextEvent = this.contextEvent.bind(this)
         this.input();
     }
 
     input() {
-        var that = this;
         this.element.addEventListener('click', function(event) {
 
         })
+        
+        this.element.addEventListener('contextmenu', this.contextEvent)
+        
+    }
 
-        this.element.addEventListener('contextmenu', function (event) {
-            event.preventDefault(); //prevent right click from opening context men
-        })
+    contextEvent(theEvent) {
+        theEvent.preventDefault();
+        this.portraits.forEach(portrait => portrait.input());
     }
 
     pause() {
@@ -23,7 +28,20 @@ class Control {
     reset() {
         
     }
-    // startInput() {
+
+    update(theObservable, theObject) {
+        if(theObservable instanceof Portrait) {
+            if(theObject.event === 'mousemove' || theObject.event === 'mouseout') {
+                this.defenderInfo.setText(theObject.object)
+            } else if (theObject.event === 'click') {
+                this.portraits.forEach(portrait => portrait.removeInput());
+            }
+        }
+    }
+}
+
+Object.assign(Control.prototype, Observable);
+// startInput() {
     //     console.log('Starting input');
     //     var getXandY = function (e) {
     //         var x = e.clientX - that.ctx.canvas.getBoundingClientRect().left;
@@ -73,4 +91,3 @@ class Control {
     //     }, false);
     //     console.log('Input started');
     // }
-}

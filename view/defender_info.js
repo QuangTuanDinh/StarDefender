@@ -3,9 +3,7 @@ class DefenderInfo {
         this.element = document.getElementById('defenderInfo');
     }
 
-    update(theObservable, theObject) {
-        if(theObservable instanceof Portrait) {
-            this.element.innerHTML = theObject;
-        }
+    setText(theText) {
+        this.element.innerHTML = theText;
     }
 }
