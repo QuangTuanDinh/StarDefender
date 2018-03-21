@@ -1,9 +1,9 @@
 class Entity {
-    constructor(row, column, properties) {
-        this.row = row;
-        this.column = column;
+    constructor(properties) {
         this.properties = Object.assign({}, properties);
-        this.removeFromWorld = false;
+        this.toRemove = false;
+        this.x = null;
+        this.y = null;
     }
 
     update() {

@@ -12,7 +12,7 @@ class Animation {
         this.elapsedTime = 1;
     }
 
-    drawPortraitAnimation(tick, ctx, x, y, isMouseIn) {
+    drawBasicAnimation(tick, ctx, x, y, border, borderColor) {
         this.elapsedTime += tick;
         if (this.isDone()) {
             if (this.loop)
@@ -26,9 +26,9 @@ class Animation {
         ctx.drawImage(this.spriteSheet, xindex * this.frameWidth, yindex * this.frameHeight, // source from sheet
             this.frameWidth, this.frameHeight, x, y, this.frameWidth * this.scale, this.frameHeight * this.scale);
 
-        if(isMouseIn) {
+        if(border) {
             ctx.lineWidth = 2;
-            ctx.strokeStyle = 'white';
+            ctx.strokeStyle = borderColor;
             ctx.strokeRect(x, y, this.frameWidth * this.scale - ctx.lineWidth, this.frameHeight * this.scale - ctx.lineWidth);
         }
     }

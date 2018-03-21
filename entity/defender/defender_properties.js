@@ -1,7 +1,7 @@
 const BATTLECRUISER_PROPERTIES = {
     name: 'battlecruiser',
     path: './img/defenders/battlecruiser/',
-    sprites: ['portrait.png', 'idle.png', 'projectile.png'],
+    sprites: ['portrait.png', 'idle.png', 'dummy.png', 'projectile.png'],
     hotkey: 'b',
     description: 'The battlecruiser is a type of terran capital ship employed in the Koprulu Sector. ' +
         'As a ship, it can <b>move</b> freely to any empty ground on the map and target both <b>ground and air</b> enemies with <b>high amount of damage</b>. ' +
@@ -16,13 +16,24 @@ const BATTLECRUISER_PROPERTIES = {
         scale: 1
     },
     idle: {
-        frameWidth: 111,
-        frameHeight: 81,
+        frameWidth: 114,
+        frameHeight: 114,
         sheetWidth: 32,
         frames: 32,
         frameDuration: 0.1,
         loop: true,
         scale: .5
+    },
+    dummy: {
+        frameWidth: 114,
+        frameHeight: 114,
+        sheetWidth: 32,
+        frames: 32,
+        frameDuration: 0.15,
+        loop: true,
+        scale: .7,
+        xOffset: 56,
+        yOffset: 53
     },
     projectile: {
         //todo
@@ -42,7 +53,7 @@ const BATTLECRUISER_PROPERTIES = {
 const FIREBAT_PROPERTIES = {
     name: 'firebat',
     path: './img/defenders/firebat/',
-    sprites: ['portrait.png', 'idle.png', 'shoot.png', 'projectile.png'],
+    sprites: ['portrait.png', 'idle.png', 'dummy.png', 'shoot.png', 'projectile.png'],
     hotkey: 'f',
     description: 'The firebat is a type of terran infantry specialized for close-quarters combat. He makes up for his <b>low range</b> with the ability to do <b>area of effect (AOE)</b> damage to <b>ground</b> enemies.',
     portrait: {
@@ -55,13 +66,24 @@ const FIREBAT_PROPERTIES = {
         scale: 1
     },
     idle: {
-        frameWidth: 31,
-        frameHeight: 31,
-        sheetWidth: 16,
-        frames: 16,
+        frameWidth: 32,
+        frameHeight: 32,
+        sheetWidth: 32,
+        frames: 32,
         frameDuration: 0.1,
         loop: true,
         scale: 1.2
+    },
+    dummy: {
+        frameWidth: 32,
+        frameHeight: 32,
+        sheetWidth: 32,
+        frames: 32,
+        frameDuration: 0.1,
+        loop: true,
+        scale: 1.2,
+        xOffset: 16,
+        yOffset: 30
     },
     shoot: {
         frameWidth: 31,
@@ -142,7 +164,7 @@ const GHOST_PROPERTIES = {
 const MARINE_PROPERTIES = {
     name: 'marine',
     path: './img/defenders/marine/',
-    sprites: ['portrait.png', 'idle.png', 'shoot.png'],
+    sprites: ['portrait.png', 'idle.png', 'dummy.png', 'shoot.png'],
     hotkey: 'm',
     description: '<b>Marines</b> are a type of terran soldier compose the bulk of most terran front-line forces. ' +
         'Their <b>rapid-fire</b> C-14 rifles are powerful weapons against <b>ground</b> enemies.',
@@ -162,7 +184,18 @@ const MARINE_PROPERTIES = {
         frames: 32,
         frameDuration: 0.1,
         loop: true,
-        scale: 1.2
+        scale: 1.3
+    },
+    dummy: {
+        frameWidth: 64,
+        frameHeight: 64,
+        sheetWidth: 32,
+        frames: 32,
+        frameDuration: 0.1,
+        loop: true,
+        scale: 1.3,
+        xOffset: 33,
+        yOffset: 42
     },
     shoot: {
         frameWidth: 64,
@@ -227,7 +260,7 @@ const SCV_PROPERTIES = {
 const TURRET_PROPERTIES = {
     name: 'turret',
     path: './img/defenders/turret/',
-    sprites: ['portrait.png', 'idle.png', 'projectile.png'],
+    sprites: ['portrait.png', 'idle.png', 'dummy.png', 'projectile.png'],
     hotkey: 't',
     description: 'The missile <b>turret</b> is a terran defense building designed to destroy <b>air</b> units.',
     portrait: {
@@ -247,6 +280,17 @@ const TURRET_PROPERTIES = {
         frameDuration: 0.1,
         loop: true,
         scale: 1
+    },
+    dummy: {
+        frameWidth: 55,
+        frameHeight: 55,
+        sheetWidth: 16,
+        frames: 16,
+        frameDuration: 0.1,
+        loop: true,
+        scale: 1,
+        xOffset: 23,
+        yOffset: 47
     },
     projectile: {
         frameWidth: 48,

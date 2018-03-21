@@ -1,6 +1,8 @@
 class Map {
-    constructor(backgroundImage, pathImage) {
-        this.background = new Background(backgroundImage);
+    constructor(backgroundImage, pathImage, gameCanvas) {
+        this.gameCanvas = gameCanvas;
+        this.gameCtx = this.gameCanvas.getContext('2d');
+        this.background = new Background(backgroundImage, this.gameCanvas);
         this.pathImage = pathImage;
         this.tileSize = 0;
         this.paths = [];
@@ -51,11 +53,11 @@ class Map {
 
     update() {
         this.background.update();
-        this.tileSize = GAME_CONTEXT.canvas.width / this.mapTiles.length;
+        this.tileSize = this.gameCanvas.width / this.mapTiles.length;
     }
 
     draw() {
-        this.background.draw();
+        this.background.draw(this.gameCtx);
         this.drawPath();
     }
 
@@ -63,7 +65,7 @@ class Map {
         for (let i = 0; i < this.mapTiles.length; i++) {
             for (let j = 0; j < this.mapTiles[i].length; j++) {
                 if (!(this.mapTiles[i][j] instanceof GroundTile)) {
-                    GAME_CONTEXT.drawImage(this.pathImage, this.tileSize * j, this.tileSize * i, this.tileSize, this.tileSize);
+                    this.gameCtx.drawImage(this.pathImage, this.tileSize * j, this.tileSize * i, this.tileSize, this.tileSize);
                 }
             }
         }

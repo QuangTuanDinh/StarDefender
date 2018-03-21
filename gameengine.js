@@ -14,13 +14,20 @@ class GameEngine {
         this.defenders = [];
         this.enemies = [];
         this.portraits = [];
+        this.dummyDefender = null;
         this.background = null
+        this.defenderInfo = null;
+        this.gameCanvas = null;
+        this.gameCtx = null;
         this.clockTick = 0;
         this.resize = this.resize.bind(this);
     }
 
     init() {
-        this.control = new Control(this.portraits);
+        this.gameCanvas = document.getElementById("gameCanvas");
+        this.gameCtx = this.gameCanvas.getContext('2d');
+        this.defenderInfo = new DefenderInfo();
+        this.control = new Control(this.portraits, this.defenderInfo, this.gameCanvas);
 
         var that = this;
         DEFENDER_PROPERTIES.forEach(defender => this.portraits.push(new Portrait(defender)));
@@ -29,7 +36,7 @@ class GameEngine {
             portrait.input();
         });
 
-        this.map = new Map(AM.getAsset(BACKGROUND_PATH), AM.getAsset(TILE_PATH));
+        this.map = new Map(AM.getAsset(BACKGROUND_PATH), AM.getAsset(TILE_PATH), this.gameCanvas);
         this.map.setMap(MAP_1);
 
         this.background = this.map.background;
@@ -41,7 +48,7 @@ class GameEngine {
         var that = this;
         (function gameLoop() {
             that.loop();
-            requestAnimFrame(gameLoop, GAME_CONTEXT.canvas);
+            requestAnimFrame(gameLoop, that.gameCanvas);
         })();
     }
 
@@ -51,19 +58,26 @@ class GameEngine {
         this.draw();
     }
 
+    setDummyDefender(theDefender) {
+        this.dummyDefender = theDefender;
+    }
+
     draw() {
-        GAME_CONTEXT.clearRect(0, 0, GAME_CONTEXT.canvas.width, GAME_CONTEXT.canvas.height);
-        GAME_CONTEXT.save();
+        this.gameCtx.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
+        this.gameCtx.save();
         this.map.draw()
         this.defenders.forEach(defender => defender.draw());
 
         this.portraits.forEach(portrait => portrait.draw());
 
-        GAME_CONTEXT.restore();
+        if(this.dummyDefender !== null) {
+            this.dummyDefender.draw(this.gameCtx);
+        }
+
+        this.gameCtx.restore();
     }
 
     update() {
-
     }
 
     reset() {

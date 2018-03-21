@@ -1,15 +1,16 @@
 var BACKGROUND_PATH = './img/maps/map_0.png';
 class Background {
-    constructor(image) {
+    constructor(image, gameCanvas) {
         this.image = image;
+        this.gameCanvas = gameCanvas;
     }
 
     update() {
-        GAME_CONTEXT.canvas.width = Math.min(window.innerWidth, window.innerHeight);
-        GAME_CONTEXT.canvas.height = GAME_CONTEXT.canvas.width;
+        this.gameCanvas.width = Math.min(window.innerWidth, window.innerHeight);
+        this.gameCanvas.height = this.gameCanvas.width;
     }
 
-    draw() {
-        GAME_CONTEXT.drawImage(this.image, 0, 0, GAME_CONTEXT.canvas.width, GAME_CONTEXT.canvas.width);
+    draw(gameCtx) {
+        gameCtx.drawImage(this.image, 0, 0, this.gameCanvas.width, this.gameCanvas.height);
     }
 }

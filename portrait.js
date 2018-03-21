@@ -1,6 +1,7 @@
 class Portrait {
     constructor(properties) {
         this.properties = properties;
+
         this.portraitCanvas = document.getElementById(this.properties.name.toLowerCase());
         this.portraitContext = this.portraitCanvas.getContext('2d');
 
@@ -13,11 +14,12 @@ class Portrait {
         this.image = AM.getAsset(this.properties.path + 'portrait.png');
         this.animation = new Animation(this.image, this.properties.portrait);
 
-        this.isMouseIn = false;
+        this.over = false;
+        this.clicked = false;
+
         this.moveEvent = this.moveEvent.bind(this);
         this.outEvent = this.outEvent.bind(this);
         this.clickEvent = this.clickEvent.bind(this);
-        console.dir(this)
     }
 
     update() {
@@ -27,52 +29,57 @@ class Portrait {
     }
 
     draw() {
-        this.animation.drawPortraitAnimation(GAME_ENGINE.clockTick, this.portraitContext, 0, 0, this.isMouseIn);
+        this.animation.drawBasicAnimation(GAME_ENGINE.clockTick, this.portraitContext, 0, 0, this.over, 'white');
     }
 
     //Mouse listener for portraits
     input() {
-        var temp = {type: 'mouseout'};
-        this.outEvent(temp);
-        
         this.portraitCanvas.addEventListener('mousemove', this.moveEvent);
 
-        
         this.portraitCanvas.addEventListener('mouseout', this.outEvent);
 
-        
-        this.portraitCanvas.addEventListener('click', this.clickEvent)
+        this.portraitCanvas.addEventListener('click', this.clickEvent);
     }
 
-    removeInput() {
-        this.portraitCanvas.removeEventListener('mousemove', this.moveEvent);
+    enableInput() {
+        this.clicked = false;
+        this.portraitCanvas.dispatchEvent(new Event('mouseout'));
+    }
 
-        this.portraitCanvas.removeEventListener('mouseout', this.outEvent);
-
-        this.portraitCanvas.removeEventListener('click', this.clickEvent);
+    disableInput() {
+        this.clicked = true;
     }
 
     moveEvent(theEvent) {
-        this.notifyObservers({
-            event: theEvent.type,
-            object: this.getInfo()
-        });
-        this.isMouseIn = true;
+        if(!this.clicked) {
+            this.over = true;
+            this.notifyObservers({
+                event: theEvent.type,
+                object: this.getInfo()
+            });
+        }
     }
 
     outEvent(theEvent) {
-        this.notifyObservers({
-            event: theEvent.type,
-            object: ''
-        });
-        this.isMouseIn = false;
+        if (!this.clicked) {
+            this.over = false;
+            this.notifyObservers({
+                event: theEvent.type,
+                object: ''
+            });
+        }
     }
 
     clickEvent(theEvent) {
-        this.notifyObservers({
-            event: theEvent.type,
-            object: ''
-        })
+        if (!this.clicked) {
+            if(!this.over) {
+                this.portraitCanvas.dispatchEvent(new Event('mousemove'));
+            }
+            this.notifyObservers({
+                event: theEvent.type,
+                object: this.properties
+            });
+        }
     }
 
     getInfo() {
