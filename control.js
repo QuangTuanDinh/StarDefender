@@ -46,7 +46,9 @@ class Control {
     }
 
     outEvent(theEvent) {
-        this.selectedDefender.drawEnabled = false;
+        if(this.selected) {
+            this.selectedDefender.drawEnabled = false;
+        }
     }
 
     pause() {
