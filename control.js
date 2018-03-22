@@ -6,16 +6,22 @@ class Control {
         this.portraits = portraits;
         this.selectedDefender = null;
         this.selected = false;
-        this.contextEvent = this.contextEvent.bind(this)
+        this.contextEvent = this.contextEvent.bind(this);
         this.moveEvent = this.moveEvent.bind(this);
         this.outEvent = this.outEvent.bind(this);
+        this.keyEvent = this.keyEvent.bind(this);
+        this.containerMoveEvent = this.containerMoveEvent.bind(this);
+        this.clickEvent = this.clickEvent.bind(this);
         this.input();
     }
 
     input() {
         this.container.addEventListener('contextmenu', this.contextEvent);
+        this.container.addEventListener('mousemove', this.containerMoveEvent);
+        this.container.addEventListener('keydown', this.keyEvent);
         this.gameCanvas.addEventListener('mousemove', this.moveEvent);
         this.gameCanvas.addEventListener('mouseout', this.outEvent);
+        this.gameCanvas.addEventListener('click', this.clickEvent);
     }
 
     contextEvent(theEvent) {
@@ -49,6 +55,32 @@ class Control {
         if(this.selected) {
             this.selectedDefender.drawEnabled = false;
         }
+    }
+
+    clickEvent(theEvent) {
+        this.contextEvent(theEvent);
+    }
+
+    keyEvent(theEvent) {
+        var that = this;
+        if(theEvent.key === 'Escape') {
+            this.contextEvent(theEvent);
+        } else {
+            this.portraits.forEach(portrait => {
+                if (theEvent.key === portrait.hotkey) {
+                    portrait.select();
+                    that.selectedDefender.drawEnabled = true;
+                    that.selectedDefender.update(that.x - that.gameCanvas.getBoundingClientRect().left,
+                                                that.y - that.gameCanvas.getBoundingClientRect().top)
+                }
+            });
+        }
+    }
+
+    containerMoveEvent(theEvent) {
+        this.container.focus();
+        this.x = theEvent.clientX;
+        this.y = theEvent.clientY;
     }
 
     pause() {

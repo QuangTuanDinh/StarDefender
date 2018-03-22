@@ -38,7 +38,7 @@ class GameEngine {
 
         this.map = new Map(AM.getAsset(BACKGROUND_PATH), AM.getAsset(TILE_PATH), this.gameCanvas);
         this.map.setMap(MAP_1);
-
+        this.tileSize = this.map.tileSize;
         this.background = this.map.background;
         this.resize();
         this.timer = new Timer();
@@ -90,7 +90,7 @@ class GameEngine {
 
     resize() {
         this.map.update();
-
+        this.tileSize = this.map.tileSize;
         let portraitsDiv = document.getElementById('portraits');
         portraitsDiv.style.height = (portraitsDiv.clientWidth * 3 / 2) + 'px';
 

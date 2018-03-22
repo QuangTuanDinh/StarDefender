@@ -118,7 +118,7 @@ const FIREBAT_PROPERTIES = {
 const GHOST_PROPERTIES = {
     name: "ghost",
     path: './img/defenders/ghost/',
-    sprites: ['portrait.png', 'idle.png', 'shoot.png'],
+    sprites: ['portrait.png', 'idle.png', 'dummy.png', 'shoot.png'],
     hotkey: 'g',
     description: 'Ghosts are feared terran covert operatives known for their assassination skills. ' +
         'They can take out both <b>ground and air</b> target from <b>long range</b> and <b>penetrate any protected armor</b>.',
@@ -134,11 +134,22 @@ const GHOST_PROPERTIES = {
     idle: {
         frameWidth: 40,
         frameHeight: 36,
-        sheetWidth: 29,
-        frames: 29,
+        sheetWidth: 16,
+        frames: 16,
         frameDuration: 0.1,
         loop: true,
         scale: 1.2
+    },
+    dummy: {
+        frameWidth: 40,
+        frameHeight: 36,
+        sheetWidth: 16,
+        frames: 16,
+        frameDuration: 0.2,
+        loop: true,
+        scale: 1.4,
+        xOffset: 23,
+        yOffset: 30
     },
     shoot: {
         frameWidth: 40,

@@ -3,7 +3,8 @@
     src: url('./font/Starcraft.ttf');
 }
 
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
     overflow: hidden;
@@ -17,7 +18,7 @@ p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    overflow:hidden;
+    overflow: hidden;
     font-family: 'starcraft';
     font-size: 1.2vw;
     letter-spacing: 0.1vw;
