@@ -70,4 +70,12 @@ class Map {
             }
         }
     }
+
+    isValid(row, column) {
+        return this.mapTiles[row][column] instanceof GroundTile && this.mapTiles[row][column].defender === null;
+    }
+
+    placeDefender(theDefender) {
+        this.mapTiles[theDefender.row][theDefender.column].defender = theDefender;
+    }
 }

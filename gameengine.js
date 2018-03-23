@@ -62,11 +62,22 @@ class GameEngine {
         this.dummyDefender = theDefender;
     }
 
+    addDefender(theDefender) {
+        if (this.map.isValid(theDefender.row, theDefender.column)) {
+            this.defenders.push(theDefender);
+            this.map.placeDefender(theDefender);
+            return true;
+        }
+        return false;
+    }
+
     draw() {
+        var that = this;
         this.gameCtx.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
         this.gameCtx.save();
-        this.map.draw()
-        this.defenders.forEach(defender => defender.draw());
+        this.map.draw();
+
+        this.defenders.forEach(defender => defender.draw(that.gameCtx));
 
         this.portraits.forEach(portrait => portrait.draw());
 
@@ -78,6 +89,7 @@ class GameEngine {
     }
 
     update() {
+        this.defenders.forEach(defender => defender.update());
     }
 
     reset() {
@@ -93,7 +105,10 @@ class GameEngine {
         this.tileSize = this.map.tileSize;
         let portraitsDiv = document.getElementById('portraits');
         portraitsDiv.style.height = (portraitsDiv.clientWidth * 3 / 2) + 'px';
-
+        this.defenders.forEach(defender => defender.updateScale());
+        if(this.dummyDefender !== null) {
+            this.dummyDefender.updateScale();
+        }
         this.portraits.forEach(portrait => portrait.update());
 
         this.map.draw();

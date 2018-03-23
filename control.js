@@ -58,7 +58,17 @@ class Control {
     }
 
     clickEvent(theEvent) {
-        this.contextEvent(theEvent);
+        if(this.selected) {
+            var row = Math.floor((theEvent.clientY - this.gameCanvas.getBoundingClientRect().top) / GAME_ENGINE.tileSize);
+            var column = Math.floor((theEvent.clientX - this.gameCanvas.getBoundingClientRect().left) / GAME_ENGINE.tileSize);
+            var defender = null;
+            if (this.selectedDefender.properties.name === 'ghost' || this.selectedDefender.properties.name === 'marine') {
+                defender = new StaticDefender(row, column, this.selectedDefender.properties);
+            }
+            if(GAME_ENGINE.addDefender(defender)) {
+                this.contextEvent(theEvent);
+            }
+        }
     }
 
     keyEvent(theEvent) {

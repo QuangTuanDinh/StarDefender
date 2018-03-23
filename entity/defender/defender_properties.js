@@ -136,9 +136,11 @@ const GHOST_PROPERTIES = {
         frameHeight: 36,
         sheetWidth: 16,
         frames: 16,
-        frameDuration: 0.1,
+        frameDuration: 0.2,
         loop: true,
-        scale: 1.2
+        scale: 1.6,
+        xOffset: 6,
+        yOffset: 15
     },
     dummy: {
         frameWidth: 40,
@@ -148,7 +150,7 @@ const GHOST_PROPERTIES = {
         frameDuration: 0.2,
         loop: true,
         scale: 1.4,
-        xOffset: 23,
+        xOffset: 20,
         yOffset: 30
     },
     shoot: {
@@ -193,9 +195,11 @@ const MARINE_PROPERTIES = {
         frameHeight: 64,
         sheetWidth: 32,
         frames: 32,
-        frameDuration: 0.1,
+        frameDuration: 0.15,
         loop: true,
-        scale: 1.3
+        scale: 1.3,
+        xOffset: 15,
+        yOffset: 25
     },
     dummy: {
         frameWidth: 64,
