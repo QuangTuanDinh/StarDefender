@@ -29,7 +29,7 @@ class Animation {
         if(border) {
             ctx.lineWidth = 2;
             ctx.strokeStyle = borderColor;
-            ctx.strokeRect(x, y, this.frameWidth * this.scale - ctx.lineWidth, this.frameHeight * this.scale - ctx.lineWidth);
+            ctx.strokeRect(x, y, this.frameWidth * this.scale - 2, this.frameHeight * this.scale - 1);
         }
     }
 

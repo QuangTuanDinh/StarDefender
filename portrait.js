@@ -17,6 +17,7 @@ class Portrait {
 
         this.bordered = false;
         this.clicked = false;
+        this.color = 'white'
 
         this.moveEvent = this.moveEvent.bind(this);
         this.outEvent = this.outEvent.bind(this);
@@ -30,25 +31,22 @@ class Portrait {
     }
 
     draw() {
-        this.animation.drawBasicAnimation(GAME_ENGINE.clockTick, this.portraitContext, 0, 0, this.bordered, 'white');
+        this.animation.drawBasicAnimation(GAME_ENGINE.clockTick, this.portraitContext, 0, 0, this.bordered, this.color);
     }
 
     //Mouse listener for portraits
     input() {
         this.portraitCanvas.addEventListener('mousemove', this.moveEvent);
-        
+
         this.portraitCanvas.addEventListener('mouseout', this.outEvent);
 
         this.portraitCanvas.addEventListener('click', this.clickEvent);
     }
 
-    enableInput() {
+    reset() {
         this.clicked = false;
-        this.portraitCanvas.dispatchEvent(new Event('mouseout'));
-    }
-
-    disableInput() {
-        this.clicked = true;
+        this.bordered = false;
+        this.color = 'white';
     }
 
     select() {
@@ -56,17 +54,14 @@ class Portrait {
     }
 
     moveEvent(theEvent) {
-        if (!this.clicked) {
-            this.bordered = true;
-            this.notifyObservers({
-                event: theEvent.type,
-                object: this.getInfo()
-            });
-        }
+        this.bordered = true;
+        this.notifyObservers({
+            event: theEvent.type,
+            object: this.getInfo()
+        });
     }
 
     outEvent(theEvent) {
-        this.isOver = false;
         if (!this.clicked) {
             this.bordered = false;
             this.notifyObservers({
@@ -77,15 +72,15 @@ class Portrait {
     }
 
     clickEvent(theEvent) {
-        if (!this.clicked) {
-            if (!this.bordered) {
-                this.portraitCanvas.dispatchEvent(new Event('mousemove'));
-            }
-            this.notifyObservers({
-                event: theEvent.type,
-                object: this.properties
-            });
+        this.notifyObservers({
+            event: theEvent.type,
+            object: this.properties
+        });
+        if (!this.bordered) {
+            this.portraitCanvas.dispatchEvent(new Event('mousemove'));
         }
+        this.clicked = true;
+        this.color = 'green'
     }
 
     getInfo() {

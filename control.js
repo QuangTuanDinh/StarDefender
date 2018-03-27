@@ -27,7 +27,7 @@ class Control {
 
     contextEvent(theEvent) {
         theEvent.preventDefault();
-        this.portraits.forEach(portrait => portrait.enableInput());
+        this.portraits.forEach(portrait => portrait.reset());
         if (this.selectedDefender) {
             this.selectedDefender.rangeIndicatorEnabled = false;
             this.selectedDefender = null;
@@ -35,11 +35,11 @@ class Control {
         GAME_ENGINE.setDummyDefender(null);
     }
 
-    portraitControl(theObject) {
+    portraitControl(theObservable, theObject) {
         if (theObject.event === 'mousemove' || theObject.event === 'mouseout') {
             this.defenderInfo.setText(theObject.object)
         } else if (theObject.event === 'click') {
-            this.portraits.forEach(portrait => portrait.disableInput());
+            this.portraits.forEach(portrait => portrait.reset());
             this.container.dispatchEvent(new Event('contextmenu'));
             this.selectedDefender = new DummyDefender(theObject.object);
             GAME_ENGINE.setDummyDefender(this.selectedDefender);
@@ -121,7 +121,7 @@ class Control {
 
     update(theObservable, theObject) {
         if (theObservable instanceof Portrait) {
-            this.portraitControl(theObject);
+            this.portraitControl(theObservable, theObject);
         }
     }
 }
