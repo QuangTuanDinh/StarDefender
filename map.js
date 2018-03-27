@@ -78,4 +78,12 @@ class Map {
     placeDefender(theDefender) {
         this.mapTiles[theDefender.row][theDefender.column].defender = theDefender;
     }
+
+    selectDefender(row, column) {
+        if(this.mapTiles[row][column] instanceof GroundTile) {
+            return this.mapTiles[row][column].defender;
+        } else {
+            return null;
+        }
+    }
 }

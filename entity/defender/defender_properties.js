@@ -20,20 +20,22 @@ const BATTLECRUISER_PROPERTIES = {
         frameHeight: 114,
         sheetWidth: 32,
         frames: 32,
-        frameDuration: 0.1,
+        frameDuration: 0.17,
         loop: true,
-        scale: .5
+        scale: .5,
+        xOffset: -30,
+        yOffset: -40
     },
     dummy: {
         frameWidth: 114,
         frameHeight: 114,
         sheetWidth: 32,
         frames: 32,
-        frameDuration: 0.15,
+        frameDuration: 0.17,
         loop: true,
-        scale: .7,
-        xOffset: 56,
-        yOffset: 53
+        scale: .5,
+        xOffset: -30,
+        yOffset: -40
     },
     projectile: {
         //todo
@@ -70,20 +72,22 @@ const FIREBAT_PROPERTIES = {
         frameHeight: 32,
         sheetWidth: 32,
         frames: 32,
-        frameDuration: 0.1,
+        frameDuration: 0.15,
         loop: true,
-        scale: 1.2
+        scale: 1.2,
+        xOffset: 0,
+        yOffset: -7
     },
     dummy: {
         frameWidth: 32,
         frameHeight: 32,
         sheetWidth: 32,
         frames: 32,
-        frameDuration: 0.1,
+        frameDuration: 0.15,
         loop: true,
         scale: 1.2,
-        xOffset: 16,
-        yOffset: 30
+        xOffset: 0,
+        yOffset: -7
     },
     shoot: {
         frameWidth: 31,
@@ -139,8 +143,8 @@ const GHOST_PROPERTIES = {
         frameDuration: 0.2,
         loop: true,
         scale: 1.6,
-        xOffset: 6,
-        yOffset: 15
+        xOffset: -6,
+        yOffset: -15
     },
     dummy: {
         frameWidth: 40,
@@ -150,8 +154,8 @@ const GHOST_PROPERTIES = {
         frameDuration: 0.2,
         loop: true,
         scale: 1.4,
-        xOffset: 20,
-        yOffset: 30
+        xOffset: -6,
+        yOffset: -15
     },
     shoot: {
         frameWidth: 40,
@@ -198,8 +202,8 @@ const MARINE_PROPERTIES = {
         frameDuration: 0.15,
         loop: true,
         scale: 1.3,
-        xOffset: 15,
-        yOffset: 25
+        xOffset: -15,
+        yOffset: -25
     },
     dummy: {
         frameWidth: 64,
@@ -209,8 +213,8 @@ const MARINE_PROPERTIES = {
         frameDuration: 0.1,
         loop: true,
         scale: 1.3,
-        xOffset: 33,
-        yOffset: 42
+        xOffset: -15,
+        yOffset: -25
     },
     shoot: {
         frameWidth: 64,
@@ -294,7 +298,9 @@ const TURRET_PROPERTIES = {
         frames: 16,
         frameDuration: 0.1,
         loop: true,
-        scale: 1
+        scale: 1,
+        xOffset: -8,
+        yOffset: -20
     },
     dummy: {
         frameWidth: 55,
@@ -304,8 +310,8 @@ const TURRET_PROPERTIES = {
         frameDuration: 0.1,
         loop: true,
         scale: 1,
-        xOffset: 23,
-        yOffset: 47
+        xOffset: -8,
+        yOffset: -20
     },
     projectile: {
         frameWidth: 48,
