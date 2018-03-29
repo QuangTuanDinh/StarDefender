@@ -64,35 +64,34 @@ class Control {
     }
 
     clickEvent(theEvent) {
+        var row = Math.floor((theEvent.clientY - this.gameCanvas.getBoundingClientRect().top) / GAME_ENGINE.tileSize);
+        var column = Math.floor((theEvent.clientX - this.gameCanvas.getBoundingClientRect().left) / GAME_ENGINE.tileSize);
         if (this.selectedDefender instanceof DummyDefender) {
-            var row = Math.floor((theEvent.clientY - this.gameCanvas.getBoundingClientRect().top) / GAME_ENGINE.tileSize);
-            var column = Math.floor((theEvent.clientX - this.gameCanvas.getBoundingClientRect().left) / GAME_ENGINE.tileSize);
             var defender = null;
             //if (this.selectedDefender.properties.name === 'ghost' || this.selectedDefender.properties.name === 'marine') {
-            defender = new StaticDefender(row, column, this.selectedDefender.properties);
+            defender = new StaticDefender(this.selectedDefender.row, this.selectedDefender.column, this.selectedDefender.properties);
             //}
-            if (GAME_ENGINE.addDefender(defender)) {
-                this.contextEvent(theEvent);
+            GAME_ENGINE.addDefender(defender);
+            this.container.dispatchEvent(new Event('contextmenu'))
+        } else {
+            if (this.selectedDefender) {
+                this.container.dispatchEvent(new Event('contextmenu'));
+            }
+            this.selectedDefender = GAME_ENGINE.map.selectDefender(row, column);
+            if (this.selectedDefender) {
+                this.selectedDefender.rangeIndicatorEnabled = true;
             }
         }
     }
 
     dblclickEvent(theEvent) {
-        var row = Math.floor((theEvent.clientY - this.gameCanvas.getBoundingClientRect().top) / GAME_ENGINE.tileSize);
-        var column = Math.floor((theEvent.clientX - this.gameCanvas.getBoundingClientRect().left) / GAME_ENGINE.tileSize);
-        if (this.selectedDefender) {
-            this.container.dispatchEvent(new Event('contextmenu'));
-        }
-        this.selectedDefender = GAME_ENGINE.map.selectDefender(row, column);
-        if (this.selectedDefender) {
-            this.selectedDefender.rangeIndicatorEnabled = true;
-        }
+
     }
 
     keyEvent(theEvent) {
         var that = this;
         if (theEvent.key === 'Escape') {
-            this.contextEvent(theEvent);
+            this.container.dispatchEvent(new Event('contextmenu'));
         } else {
             this.portraits.forEach(portrait => {
                 if (theEvent.key === portrait.hotkey) {
